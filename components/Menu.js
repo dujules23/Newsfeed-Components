@@ -16,22 +16,38 @@ function menuMaker(menuItems){
 
   const mainMdiv = document.createElement('div')
   const ul = document.createElement('ul')
-  const li = document.createElement('li')
+  
 
   
   mainMdiv.appendChild(ul)
 
-  ul.appendChild(li)
+  
 
+  console.log(mainMdiv)
 
   mainMdiv.classList.add('menu')
 
 
+  menuItems.forEach( menuDatum =>{
+    const li = document.createElement('li')
+    menuDatum.push(li) 
+    return li
+  })
+
+
+  const menuButton = document.querySelector('.menu-button')
+
+  menuButton.addEventListener('click', () => {
+
+    menuButton.classList.toggle('.menu--open')
+  })
 
 
 
   return mainMdiv
 }
+
+console.log(menuMaker(menu[0]))
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
