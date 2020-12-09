@@ -30,8 +30,9 @@ function menuMaker(menuItems){
 
   menuItems.forEach( menuDatum =>{
     const li = document.createElement('li')
-    menuDatum.push(li) 
-    return li
+    console.log(li)
+    li.push(menuDatum)
+    ul.appendChild(li)
   })
 
 
@@ -41,7 +42,7 @@ function menuMaker(menuItems){
 
     menuButton.classList.toggle('.menu--open')
   })
-
+  console.log(menuButton)
 
 
   return mainMdiv
