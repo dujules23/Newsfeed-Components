@@ -89,11 +89,65 @@ const data = [
   }
 ];
 
+// const section = document.querySelector('div.articles')
+// console.log(section)
+
+const articlesDiv = document.querySelector('.articles')
+console.log(articlesDiv)
+function articleMaker(article){
+  
+  
+  const mainDiv = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const para1 = document.createElement('p')
+  const para2 = document.createElement('p')
+  const para3 = document.createElement('p')
+  const span = document.createElement('span')
+
+
+  mainDiv.appendChild(title)
+  mainDiv.appendChild(date)
+  mainDiv.appendChild(span)
+  mainDiv.appendChild(para1)
+  mainDiv.appendChild(para2)
+  mainDiv.appendChild(para3)
+
+  date.classList.add('date')
+  span.classList.add('expandButton')
+
+  title.textContent = article.title
+  date.textContent = article.date
+  para1.textContent = article.firstParagraph
+  para2.textContent = article.secondParagraph
+  para3.textContent = article.thirdParagraph
+
+  console.log(title)
+
+  span.addEventListener('click', () => {
+    span.classList.toggle('expandButton');
+  })
+
+  return mainDiv 
+  
+}
+
+console.log(articleMaker(data[0]));
+
+
+// data.forEach(artObj => {
+//     const artComponent = articleMaker(artObj, data)
+//     return section.appendChild(artComponent)
+// })
+
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
-
+  
+  
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -111,6 +165,40 @@ const data = [
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  Refresh the page to see the new article.
-*/
+  */
+
+  // let articleComp = data.map( artDatum => {
+  //   articleMaker(artDatum)
+  //   return articlesDiv.appendChild(articleComp)
+  // });
+
+  for (var i = 0; i < data.length; i++){
+  const articleObject = data[i];
+  const article = articleMaker(articleObject)
+  console.log(article)
+  articlesDiv.appendChild(article)
+}  
+
+
+
+
+  //Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+//   Refresh the page to see the new article.
+// *//
+
+// const newObj = {
+
+//   title: 'Hey Hey',
+//   date: 'the future',
+//   firstParagraph:'The best',
+//   secondParagraph: 'is yet',
+//   thirdParagraph: 'to come'
+// }
+
+// newObj.push(data);
+
+// let addObj = data.map(newObj =>{
+//     return articlesDiv.push(newObj)
+// } )
+
+// console.log(articleMaker(addObj));
